@@ -2,6 +2,7 @@ import httpx
 import asyncio
 import sys
 
+
 async def check_connectivity(base_url: str, profile_name: str = "default.pt"):
     """
     Verifies if the Qwen-TTS API server is reachable and the specified profile exists.
@@ -20,7 +21,9 @@ async def check_connectivity(base_url: str, profile_name: str = "default.pt"):
                 print(f"✅ Success: Profile '{profile_name}' is available.")
                 return True
             elif response.status_code == 404:
-                print(f"⚠️ Warning: Connected to server, but profile '{profile_name}' not found (404).")
+                print(
+                    f"⚠️ Warning: Connected to server, but profile '{profile_name}' not found (404)."
+                )
                 return False
             else:
                 print(f"❌ Error: Server responded with status {response.status_code}")
@@ -28,11 +31,14 @@ async def check_connectivity(base_url: str, profile_name: str = "default.pt"):
                 return False
 
     except httpx.ConnectError:
-        print(f"❌ Error: Could not connect to the server at {base_url}. Is the server running?")
+        print(
+            f"❌ Error: Could not connect to the server at {base_url}. Is the server running?"
+        )
         return False
     except Exception as e:
         print(f"❌ Unexpected Error: {e}")
         return False
+
 
 if __name__ == "__main__":
     # Default values, can be moved to config later
