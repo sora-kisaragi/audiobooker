@@ -30,6 +30,7 @@ Thumbs.db
 /CON
 
 # Media / generated files
+input/
 media/
 *.mp4
 *.wav
